@@ -2,7 +2,7 @@
   "name": "grpc-nest-auth-svc",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Kevin Vogel",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -18,7 +18,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "proto": "protoc --plugin=node_modules/.bin/protoc-gen-ts_proto -I=./node_modules/grpc-nest-proto/proto --ts_proto_out=src/auth/proto/ node_modules/grpc-nest-proto/proto/auth.proto --ts_proto_opt=nestJs=true --ts_proto_opt=fileSuffix=.pb --ts_proto_opt=esModuleInterop=true"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -51,6 +52,7 @@
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "grpc-nest-proto": "git+https://github.com/hellokvn/grpc-nest-proto.git",
     "jest": "^27.2.5",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",
