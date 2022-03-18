@@ -4,7 +4,7 @@ import { LoginRequestDto, RegisterRequestDto, ValidateRequestDto } from './auth.
 import { AUTH_SERVICE_NAME, RegisterResponse, LoginResponse, ValidateResponse } from './auth.pb';
 import { AuthService } from './service/auth.service';
 
-@Controller('auth')
+@Controller()
 export class AuthController {
   @Inject(AuthService)
   private readonly service: AuthService;
@@ -19,7 +19,7 @@ export class AuthController {
     return this.service.login(payload);
   }
 
-  @GrpcMethod(AUTH_SERVICE_NAME, 'ValidateToken')
+  @GrpcMethod(AUTH_SERVICE_NAME, 'Validate')
   private validate(payload: ValidateRequestDto): Promise<ValidateResponse> {
     return this.service.validate(payload);
   }
